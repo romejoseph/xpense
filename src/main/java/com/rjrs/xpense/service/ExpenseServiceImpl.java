@@ -19,8 +19,8 @@ class ExpenseServiceImpl implements ExpenseService {
     }
 
     @Override
-    public Expense createExpense(String description, BigDecimal amount, ExpenseCategory category, LocalDate expensedate) {
-        return this.repo.save(new Expense(description, amount, category, expensedate));
+    public Expense createExpense(String description, BigDecimal amount, ExpenseCategory category, LocalDate expenseDate) {
+        return this.repo.save(new Expense(description, amount, category, expenseDate));
     }
 
     @Override
