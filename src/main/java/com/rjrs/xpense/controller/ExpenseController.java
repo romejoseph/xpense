@@ -46,4 +46,13 @@ class ExpenseController {
             throw new RuntimeException(e);
         }
     }
+
+    @DeleteMapping("/{uuid}")
+    public void deleteExpense(@PathVariable UUID uuid) {
+        try {
+            this.service.deleteExpense(uuid);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
 }
