@@ -31,7 +31,7 @@ class ExpenseServiceImpl implements ExpenseService {
 
     @Override
     public Expense getExpenseByUUID(UUID uuid) {
-        return this.repo.findById(uuid).orElse(null);
+        return this.repo.findById(uuid).orElseThrow();
     }
 
     @Override

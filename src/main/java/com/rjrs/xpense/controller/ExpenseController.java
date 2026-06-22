@@ -2,12 +2,14 @@ package com.rjrs.xpense.controller;
 
 import com.rjrs.xpense.dto.CreateExpenseRequest;
 import com.rjrs.xpense.entity.Expense;
+import com.rjrs.xpense.exception.ExpenseNotFoundException;
 import com.rjrs.xpense.service.ExpenseService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.NoSuchElementException;
 import java.util.UUID;
 
 @RestController
@@ -42,8 +44,8 @@ class ExpenseController {
     public Expense getExpense(@PathVariable UUID uuid) {
         try {
             return this.service.getExpenseByUUID(uuid);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
+        } catch (NoSuchElementException e) {
+            throw new ExpenseNotFoundException(e.getMessage());
         }
     }
 
