@@ -24,20 +24,12 @@ class ExpenseController {
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Expense createExpense(@RequestBody CreateExpenseRequest expense) {
-        try {
-            return this.service.createExpense(expense.description(), expense.amount(), expense.category(), expense.expenseDate());
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        return this.service.createExpense(expense.description(), expense.amount(), expense.category(), expense.expenseDate());
     }
 
     @GetMapping
     public Page<Expense> getAllExpenses(Pageable pageable) {
-        try {
-            return this.service.getAllExpenses(pageable);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        return this.service.getAllExpenses(pageable);
     }
 
     @GetMapping("/{uuid}")
@@ -51,10 +43,6 @@ class ExpenseController {
 
     @DeleteMapping("/{uuid}")
     public void deleteExpense(@PathVariable UUID uuid) {
-        try {
-            this.service.deleteExpense(uuid);
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
+        this.service.deleteExpense(uuid);
     }
 }
