@@ -28,7 +28,14 @@ class ExpenseController {
     }
 
     @GetMapping
-    public Page<Expense> getAllExpenses(Pageable pageable) {
+    public Page<Expense> getAllExpenses(
+            @RequestParam(required = false) Integer page,
+            @RequestParam(required = false) Integer size,
+            Pageable pageable) {
+        if (page == null && size == null) {
+            pageable = Pageable.unpaged();
+        }
+
         return this.service.getAllExpenses(pageable);
     }
 
