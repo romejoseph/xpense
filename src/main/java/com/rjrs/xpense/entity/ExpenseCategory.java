@@ -2,8 +2,10 @@ package com.rjrs.xpense.entity;
 
 public enum ExpenseCategory {
     FOOD,
-    TRANSPORT,
+    TRANSPORTATION,
     UTILITIES,
     ENTERTAINMENT,
+    SHOPPING,
+    HEALTH,
     OTHER,
 }
